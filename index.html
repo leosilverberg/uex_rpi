@@ -14,12 +14,12 @@
 	  <!-- jQuery -->
   <script src="http://code.jquery.com/jquery.js"></script>
   <!-- Bootstrap JavaScript -->
-  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/scripts/style.css" />
   <script src="/socket.io/socket.io.js"></script>
   <script src="scripts/control.js"></script>
 </head>
 <body>
-	<button type="button" id="" class="btn btn-info start" onclick="startStream()">Start Camera</button>
+	<button type="button" id="" class="btn btn-info start" onclick="capture()">capture</button>
   <br>
   <br>
   <br>
@@ -36,7 +36,7 @@
 		change this internal resolution to whatever the source provides. The size the
 		canvas is displayed on the website is dictated by the CSS style.
 	-->
-	<canvas id="videoCanvas" width="640px" height="480px">
+	<canvas class="hFlip" id="videoCanvas" width="640px" height="480px">
 		
 	</canvas>
 	<script type="text/javascript" src="scripts/jsmpg.js"></script>
@@ -46,7 +46,7 @@
 		var ctx = canvas.getContext('2d');
 		ctx.fillStyle = 'black';
 		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
-
+		ctx.scale(-1,1);
 		// Setup the WebSocket connection and start the player
 		var client = new WebSocket('ws://172.24.1.1:8084/');
 		var player = new jsmpeg(client, {canvas:canvas});

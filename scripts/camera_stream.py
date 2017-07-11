@@ -37,8 +37,8 @@ mh = Adafruit_MotorHAT()
 #setting up stepper1 200 steps/rev
 decStepper = mh.getStepper(200,1)
 raStepper = mh.getStepper(200,2)
-decStepper.setSpeed(20)
-raStepper.setSpeed(20)
+decStepper.setSpeed(10)
+raStepper.setSpeed(10)
 ###########################################
 def turnOffMotors():
     mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
@@ -99,28 +99,33 @@ class ControlThread(Thread):
 		super(ControlThread, self).__init__()
 	
 	def run(self):
-		try:
-			while True:
-				data = sys.stdin.readline()
-				if data > "" :
-					dataString = str(data)
-					if dataString == "up\n" :
-						print("[py] got up")
-						raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
-					elif dataString == "down\n" :
-						print("[py] got down")
-						raStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
-					elif dataString == "left\n" :
-						print("[py] got left")
-						decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
-					elif dataString == "right\n" :
-						print("[py] got right")
-						decStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
-					elif dataString == "kill\n" :
-						print("stop all processes")
-	
-		finally:
-			print("closing control")
+
+		while True:
+			data = sys.stdin.readline()
+			if data > "" :
+				dataString = str(data)
+				if dataString == "up\n" :
+					print("[py] got up")
+					raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+				elif dataString == "down\n" :
+					print("[py] got down")
+					raStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+				elif dataString == "left\n" :
+					print("[py] got left")
+					decStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+				elif dataString == "right\n" :
+					print("[py] got right")
+					decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+				elif dataString == "kill\n" :
+					print("stop all processes")
+				elif dataString == "capture\n" :
+					print("[py] capturing")
+					#with picamera.PiCamera() as camera:
+					#picamera.PiCamera().stop_recording()
+					#control_thread = ControlThread()
+					#control_thread.start()
+					#	camera.capture('test.jpg')
+
 		          
             
 def main():

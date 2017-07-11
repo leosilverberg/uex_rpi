@@ -29,4 +29,8 @@ var socket = io();
 	  socket.emit('right-move');
   }
   
+  function capture(){
+	  socket.emit('capture');
+  }
+  
   
