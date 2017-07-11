@@ -94,9 +94,12 @@ class BroadcastThread(Thread):
         finally:
             self.converter.stdout.close()
 
+
+
 class ControlThread(Thread):
-	def __init__(self):
+	def __init__(self, camera):
 		super(ControlThread, self).__init__()
+		self.camera = camera
 	
 	def run(self):
 
@@ -120,6 +123,17 @@ class ControlThread(Thread):
 					print("stop all processes")
 				elif dataString == "capture\n" :
 					print("[py] capturing")
+					try:
+						print("[py] stopping recording")
+						self.camera.stop_recording()
+						print("[py] rec stopped")
+						sleep(2)
+						print("[py] starting recording")
+						main()
+						print("[py] rec started")
+					except:
+						pass
+					#decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 					#with picamera.PiCamera() as camera:
 					#picamera.PiCamera().stop_recording()
 					#control_thread = ControlThread()
@@ -149,7 +163,7 @@ def main():
         camera.start_recording(output, 'yuv')
         print('Starting motor inits & init control thread')
         atexit.register(turnOffMotors)
-        control_thread = ControlThread()
+        control_thread = ControlThread(camera)
         try:
             print('Starting websockets thread')
             websocket_thread.start()
