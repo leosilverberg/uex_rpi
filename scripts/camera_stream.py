@@ -10,6 +10,7 @@ from struct import Struct
 from threading import Thread
 from time import sleep, time
 from wsgiref.simple_server import make_server
+from fractions import Fraction
 
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_StepperMotor
 
@@ -24,8 +25,8 @@ from ws4py.server.wsgiutils import WebSocketWSGIApplication
 
 ###########################################
 # CONFIG
-WIDTH = 640
-HEIGHT = 480
+WIDTH = 1024
+HEIGHT = 768
 FRAMERATE = 24
 HTTP_PORT = 8082
 WS_PORT = 8084
@@ -39,6 +40,16 @@ decStepper = mh.getStepper(200,1)
 raStepper = mh.getStepper(200,2)
 decStepper.setSpeed(10)
 raStepper.setSpeed(10)
+
+broadcast_thread = None
+websocket_server = None
+output = None
+camera = picamera.PiCamera()
+camera.resolution = (2592,1944)
+u_res = (1024,768)
+camera.framerate = FRAMERATE
+camera.annotate_text = str(camera.resolution)
+camera.vflip = True
 ###########################################
 def turnOffMotors():
     mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
@@ -46,7 +57,18 @@ def turnOffMotors():
     mh.getMotor(3).run(Adafruit_MotorHAT.RELEASE)
     mh.getMotor(4).run(Adafruit_MotorHAT.RELEASE)
 
-
+def startBc():
+	global websocket_server
+	global output
+	global camera
+	global broadcast_thread
+    
+	output = BroadcastOutput(camera)
+	broadcast_thread = BroadcastThread(output.converter, websocket_server)
+	print('Starting recording')
+	camera.start_recording(output, 'yuv', resize=(1024,768))
+	print('Starting bc|||||||||||||##########')
+	broadcast_thread.start()
 
 class StreamingWebSocket(WebSocket):
     def opened(self):
@@ -59,7 +81,7 @@ class BroadcastOutput(object):
             'avconv',
             '-f', 'rawvideo',
             '-pix_fmt', 'yuv420p',
-            '-s', '%dx%d' % camera.resolution,
+            '-s', '%dx%d' % u_res,
             '-r', str(float(camera.framerate)),
             '-i', '-',
             '-f', 'mpeg1video',
@@ -96,13 +118,17 @@ class BroadcastThread(Thread):
 
 
 
+
+
 class ControlThread(Thread):
-	def __init__(self, camera):
+	def __init__(self):
 		super(ControlThread, self).__init__()
-		self.camera = camera
 	
 	def run(self):
-
+		global websocket_server
+		global output
+		global camera
+		global broadcast_thread
 		while True:
 			data = sys.stdin.readline()
 			if data > "" :
@@ -124,13 +150,23 @@ class ControlThread(Thread):
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
-						print("[py] stopping recording")
-						self.camera.stop_recording()
-						print("[py] rec stopped")
-						sleep(2)
-						print("[py] starting recording")
-						main()
-						print("[py] rec started")
+					
+						print("[py] taking picture")
+						
+						camera.annotate_text = str(camera.resolution)
+						print("[py] annotated")
+						camera.stop_recording()
+						print("[py] stopped rec")
+						
+						camera.resolution = (2592,1944)
+						print("[py] changed to hi-res")
+						camera.capture('new.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
+						print("[py] picture taken")
+
+						
+						startBc()
+						print("[py] started broadcast again")
+						
 					except:
 						pass
 					#decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
@@ -140,50 +176,56 @@ class ControlThread(Thread):
 					#control_thread.start()
 					#	camera.capture('test.jpg')
 
-		          
+
+    
+    		          
             
 def main():
     print('Initializing camera')
-    with picamera.PiCamera() as camera:
-        camera.resolution = (WIDTH, HEIGHT)
-        camera.framerate = FRAMERATE
-        sleep(1) # camera warm-up time
-        print('Initializing websockets server on port %d' % WS_PORT)
-        websocket_server = make_server(
-            '', WS_PORT,
-            server_class=WSGIServer,
-            handler_class=WebSocketWSGIRequestHandler,
-            app=WebSocketWSGIApplication(handler_cls=StreamingWebSocket))
-        websocket_server.initialize_websockets_manager()
-        websocket_thread = Thread(target=websocket_server.serve_forever)
-        print('Initializing broadcast thread')
-        output = BroadcastOutput(camera)
-        broadcast_thread = BroadcastThread(output.converter, websocket_server)
-        print('Starting recording')
-        camera.start_recording(output, 'yuv')
-        print('Starting motor inits & init control thread')
-        atexit.register(turnOffMotors)
-        control_thread = ControlThread(camera)
-        try:
-            print('Starting websockets thread')
-            websocket_thread.start()
-            print('Starting broadcast thread')
-            broadcast_thread.start()
-            print('Starting control thread')
-            control_thread.start()
-            while True:
-                camera.wait_recording(1)
-        except KeyboardInterrupt:
-            pass
-        finally:
-            print('Stopping recording')
-            camera.stop_recording()
-            print('Waiting for broadcast thread to finish')
-            broadcast_thread.join()
-            print('Shutting down websockets server')
-            websocket_server.shutdown()
-            print('Waiting for websockets thread to finish')
-            websocket_thread.join()
+    global websocket_server
+    global output
+    global camera
+    global broadcast_thread
+    
+    #camera.resolution = (WIDTH, HEIGHT)
+    #camera.framerate = FRAMERATE
+    sleep(1) # camera warm-up time
+    print('Initializing websockets server on port %d' % WS_PORT)
+    websocket_server = make_server(
+		'', WS_PORT,
+		server_class=WSGIServer,
+		handler_class=WebSocketWSGIRequestHandler,
+		app=WebSocketWSGIApplication(handler_cls=StreamingWebSocket))
+    websocket_server.initialize_websockets_manager()
+    websocket_thread = Thread(target=websocket_server.serve_forever)
+    print('Initializing broadcast thread')
+    output = BroadcastOutput(camera)
+    broadcast_thread = BroadcastThread(output.converter, websocket_server)
+    print('Starting recording')
+    camera.start_recording(output, 'yuv', resize=(1024,768))
+    print('Starting motor inits & init control thread')
+    atexit.register(turnOffMotors)
+    control_thread = ControlThread()
+    try:
+        print('Starting websockets thread')
+        websocket_thread.start()
+        print('Starting broadcast thread')
+        broadcast_thread.start()
+        print('Starting control thread')
+        control_thread.start()
+        while True:
+            camera.wait_recording(1)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        print('Stopping recording')
+        camera.stop_recording()
+        print('Waiting for broadcast thread to finish')
+        broadcast_thread.join()
+        print('Shutting down websockets server')
+        websocket_server.shutdown()
+        print('Waiting for websockets thread to finish')
+        websocket_thread.join()
 
 
 if __name__ == '__main__':
