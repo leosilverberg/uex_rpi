@@ -1,3 +1,17 @@
+body{
+	background-color:#28282c;
+}
+
+.header h1{
+	color:white;
+}
+
+#videoCanvas {
+		border-radius:5px;
+}
+
 .hFlip{
 
-	}
+}
+
+
