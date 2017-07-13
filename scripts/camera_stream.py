@@ -15,6 +15,7 @@ from fractions import Fraction
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_StepperMotor
 
 import time
+from datetime import datetime
 import atexit
 import curses
 
@@ -160,9 +161,21 @@ class ControlThread(Thread):
 						
 						camera.resolution = (2592,1944)
 						print("[py] changed to hi-res")
-						camera.capture('new.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
-						print("[py] picture taken")
-
+						camera.capture('captured/'+str(datetime.now())+'_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
+						print("[py]defualt picture taken")
+						camera.framerate = (Fraction(1,6))
+						camera.shutter_speed = 6000000
+						camera.iso = 800
+						sleep(10)
+						camera.exposure_mode = 'off'
+						print(camera.shutter_speed)
+						
+						camera.capture('captured/'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
+						
+						print("[py]long exp picture taken")
+						camera.framerate = 24
+						camera.iso = 500
+						sleep(10)
 						
 						startBc()
 						print("[py] started broadcast again")
