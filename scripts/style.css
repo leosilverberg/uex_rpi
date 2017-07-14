@@ -1,8 +1,105 @@
+/* #######################
+
+Font imports
+
+##########################*/
+@font-face {
+  font-family: 'Lato';
+  src: url("fonts/Lato-Regular.ttf") format("trueType");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Lato';
+  src: url("fonts/Lato-Light.ttf") format("trueType");
+  font-weight: 300;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'Lato';
+  src: url("fonts/Lato-Bold.ttf") format("trueType");
+  font-weight: 700;
+  font-style: normal; }
+
+/* #######################
+
+SASS Variables
+
+##########################*/
+/* #######################
+
+SASS mixins
+
+##########################*/
+/* #######################
+
+Main CSS
+
+##########################*/
 body {
   background-color: #28282c; }
 
 .header h1 {
-  color: white; }
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 3px; }
+
+.header {
+  text-align: center;
+  padding-bottom: 50px; }
 
 #videoCanvas {
-  border-radius: 5px; }
+  border-radius: 5px;
+  border: 1px white solid; }
+
+.lrarrow:before {
+  content: ' ';
+  display: inline-block;
+  vertical-align: middle;
+  height: 40%; }
+
+.lrarrow img {
+  display: inline-block;
+  vertical-align: middle; }
+
+thin {
+  font-weight: 200 !important; }
+
+.dirArrow img {
+  opacity: 0.8; }
+
+.dirArrow img:hover {
+  opacity: 1; }
+
+.footerContainer {
+  position: fixed;
+  bottom: 0px;
+  width: 100%; }
+
+.cameraContainer {
+  background-color: #343439;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  padding-bottom: 30px; }
+
+.cameraContainer p {
+  font-family: 'Lato', sans-serif;
+  margin-left: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  color: #ed1b35;
+  font-weight: 200;
+  font-size: 0.8em;
+  opacity: 0.9; }
+
+.shutter-button img {
+  opacity: 0.8; }
+
+.shutter-button img:hover {
+  opacity: 1; }
+
+.camera-slider {
+  vertical-align: middle;
+  width: 95%;
+  margin: 1em; }

@@ -1,11 +1,173 @@
+/* #######################
+
+Font imports
+
+##########################*/
+
+@font-face {
+  font-family: 'Lato';
+  src: url('fonts/Lato-Regular.ttf') format('trueType');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('fonts/Lato-Light.ttf') format('trueType');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lato';
+  src: url('fonts/Lato-Bold.ttf') format('trueType');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* #######################
+
+SASS Variables
+
+##########################*/
+
+$base-grey: #28282c;
+$lightest-grey: #A7A7B8;
+$lighter-grey:#6E6E78;
+$light-grey:#343439;
+
+
+$base-red: #ed1b35;
+$base-blue: #1874BA;
+$base-yellow: #EDF050;
+$base-green: #37ED74;
+$base-white:white;
+
+/* #######################
+
+SASS mixins
+
+##########################*/
+
+@mixin box_shadow ($level) {
+
+    @if $level == 1 {
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    } @else if $level == 2 {
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    } @else if $level == 3 {
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    } @else if $level == 4 {
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    } @else if $level == 5 {
+        box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+
+}
+
+
+
+/* #######################
+
+Main CSS
+
+##########################*/
+
+
+
 body{
-	background-color:#28282c;
+	background-color:$base-grey;
 }
 
 .header h1{
-	color:white;
+	font-family:'Lato', sans-serif;
+	font-weight:normal;
+	color:$base-white;
+	text-transform:uppercase;
+	letter-spacing:3px;
+
+}
+
+.header {
+	text-align:center;
+	padding-bottom:50px;
 }
 
 #videoCanvas {
 		border-radius:5px;
+		border:1px $base-white solid;
 }
+
+
+
+.lrarrow{
+
+}
+
+.lrarrow:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 40%;
+}
+
+.lrarrow img{
+	display:inline-block;
+	vertical-align: middle;
+}
+
+
+thin{
+	font-weight:200 !important;
+}
+
+.dirArrow img{
+	opacity:0.8;
+}
+
+.dirArrow img:hover{
+	opacity:1;
+}
+
+.footerContainer{
+	
+	position:fixed;
+	bottom:0px;
+	width:100%;
+}
+
+.cameraContainer{
+	background-color:$light-grey;
+	@include box_shadow(5);
+	padding-bottom:30px;
+}
+
+.cameraContainer p{
+	font-family:'Lato', sans-serif;
+	margin-left:1em;
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+	color:$base-red;
+	font-weight:200;
+	font-size:0.8em;
+	opacity:0.9;
+}
+
+.shutter-button img{
+
+	
+	opacity:0.8;
+}
+
+.shutter-button img:hover{
+	opacity:1;
+}
+
+.camera-slider{
+	vertical-align: middle;
+	width:95%;
+	margin: 1em;
+}
+
+

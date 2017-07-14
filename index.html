@@ -22,32 +22,99 @@
 	<div class="pure-u-1-3">
 	</div>
 	<div class="pure-u-1-3">
-		<h1>ultrascope</h1>
+		<h1>ultrascope | <thin>Explorer +</thin></h1>
 	</div>
 	<div class="pure-u-1-3">
 	</div>
 
 </div>
+
+
 <div class="pure-g">
     <div class="pure-u-1-3"></div>
 
     <div class="pure-u-1-3">
+      <div class="pure-g">
+        <div class="pure-u-11-24">
+        </div>
+        <div class="pure-u-2-24 dirArrow">
+          <img class="pure-img" src="scripts/images/up-arrow.png" onclick="upMove()"/>
+        </div>
+        <div class="pure-u-11-24">
+        </div>
+
+      </div>
+
     	<div class="pure-g">
-    		<div id="finderDiv" class="pure-u-1-1">
-    			<canvas class="hFlip" id="videoCanvas"></canvas>
+        <div class="lrarrow dirArrow pure-u-2-24"> 
+          <img class="pure-img" src="scripts/images/left-arrow.png" onclick="leftMove()"/>
+        </div>
+    		<div id="finderDiv" class="pure-u-20-24">
+    			<canvas id="videoCanvas"></canvas>
     		</div>
+
+        <div class="lrarrow dirArrow pure-u-2-24"> 
+          <img class="pure-img" src="scripts/images/right-arrow.png" onclick="rightMove()"/>
+        </div>
     	</div>
+
+       <div class="pure-g">
+        <div class="pure-u-11-24">
+        </div>
+        <div class="pure-u-2-24 dirArrow">
+          <img class="pure-img" src="scripts/images/down-arrow.png" onclick="downMove()"/>
+        </div>
+        <div class="pure-u-11-24">
+        </div>
+
+      </div>
     	
     </div>
 
     <div class="pure-u-1-3"></div>
 </div>
 
+<div class="pure-g footerContainer">
+
+<div class="pure-u-1-3">
+</div>
+
+
+<div class="pure-u-1-3 cameraContainer">
+  <div class="pure-g">
+    <div class="pure-u-1-4 shutter-button">
+      <p>capture</p>
+      <img class="pure-img" src="scripts/images/camera-button.png" onclick="capture()"/>
+    </div>
+
+    <div class="pure-u-1-2">
+    <p>camera settings</p>
+
+      <input class="camera-slider" type="range" min="-10" max="10">
+      <input class="camera-slider" type="range" min="-10" max="10">
+      <input class="camera-slider" type="range" min="-10" max="10">
+    </div>
+
+    <div class="pure-u-1-4">
+    <p>images</p>
+    </div>
+
+
+  </div>
+</div>
+
+
+<div class="pure-u-1-3">
+</div>
+
+
+</div>
 
 
 
-	<button type="button" id="" class="btn btn-info start" onclick="capture()">capture</button>
-  <br>
+
+
+  <!-- <br>
   <br>
   <br>
   <button type="button" id="" class="btn btn-info " onclick="upMove()">&uarr;UP&uarr;</button>
@@ -58,7 +125,7 @@
   <br>
   <br>
   
-  <button type="button" id="" class="btn btn-info " onclick="downMove()">&darr;DOWN&darr;</button>
+  <button type="button" id="" class="btn btn-info " onclick="downMove()">&darr;DOWN&darr;</button> -->
 	<!-- The Canvas size specified here is the "initial" internal resolution. jsmpeg will
 		change this internal resolution to whatever the source provides. The size the
 		canvas is displayed on the website is dictated by the CSS style.

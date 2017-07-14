@@ -1,37 +1,37 @@
- var socket = io();
-   socket.on('liveStream', function(url) {
-     $('#stream').attr('src', url);
-     $('.start').hide();
-   });
+ // var socket = io();
+ //   socket.on('liveStream', function(url) {
+ //     $('#stream').attr('src', url);
+ //     $('.start').hide();
+ //   });
  
-   function startStream() {
-     socket.emit('start-stream');
-     $('.start').hide();
-   }
+ //   function startStream() {
+ //     socket.emit('start-stream');
+ //     $('.start').hide();
+ //   }
   
-   function testMove(){
- 	socket.emit('test-move');
-   }
+ //   function testMove(){
+ // 	socket.emit('test-move');
+ //   }
   
-   function upMove(){
- 	  socket.emit('up-move');
-   }
+ //   function upMove(){
+ // 	  socket.emit('up-move');
+ //   }
   
-   function downMove(){
- 	  socket.emit('down-move');
-   }
+ //   function downMove(){
+ // 	  socket.emit('down-move');
+ //   }
   
-   function leftMove(){
- 	  socket.emit('left-move');
-   }
+ //   function leftMove(){
+ // 	  socket.emit('left-move');
+ //   }
   
-   function rightMove(){
- 	  socket.emit('right-move');
-   }
+ //   function rightMove(){
+ // 	  socket.emit('right-move');
+ //   }
   
-   function capture(){
- 	  socket.emit('capture');
-   }
+ //   function capture(){
+ // 	  socket.emit('capture');
+ //   }
 
 $(document).ready(function() {
 
