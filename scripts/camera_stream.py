@@ -51,6 +51,7 @@ u_res = (1024,768)
 camera.framerate = FRAMERATE
 camera.annotate_text = str(camera.resolution)
 camera.vflip = True
+camera.shutter_speed = 0
 ###########################################
 def turnOffMotors():
     mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
@@ -164,7 +165,7 @@ class ControlThread(Thread):
 						camera.capture('captured/'+str(datetime.now())+'_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
 						print("[py]defualt picture taken")
 						camera.framerate = (Fraction(1,6))
-						camera.shutter_speed = 6000000
+						camera.shutter_speed = 5000000
 						camera.iso = 800
 						sleep(10)
 						camera.exposure_mode = 'off'
@@ -173,9 +174,12 @@ class ControlThread(Thread):
 						camera.capture('captured/'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
 						
 						print("[py]long exp picture taken")
+						
 						camera.framerate = 24
-						camera.iso = 500
-						sleep(10)
+						camera.shutter_speed = 0
+						camera.iso = 100
+						camera.exposure_mode='auto'
+						sleep(20)
 						
 						startBc()
 						print("[py] started broadcast again")
