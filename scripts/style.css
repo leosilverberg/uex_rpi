@@ -36,8 +36,12 @@ SASS mixins
 Main CSS
 
 ##########################*/
+*, *:before, *:after {
+  box-sizing: border-box; }
+
 body {
-  background-color: #28282c; }
+  background-color: #28282c;
+  font-family: 'Lato', sans-serif; }
 
 .header h1 {
   font-family: 'Lato', sans-serif;
@@ -78,20 +82,28 @@ thin {
   bottom: 0px;
   width: 100%; }
 
-.cameraContainer {
+.settingsContainer {
   background-color: #343439;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding-bottom: 30px; }
 
-.cameraContainer p {
+.settingsContainer p {
   font-family: 'Lato', sans-serif;
-  margin-left: 1em;
-  margin-top: 0.5em;
+  margin-left: 5px;
+  margin-top: 1px;
   margin-bottom: 0.5em;
   color: #ed1b35;
   font-weight: 200;
   font-size: 0.8em;
   opacity: 0.9; }
+
+.cardTopper {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #ed1b35;
+  padding: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.7em; }
 
 .shutter-button img {
   opacity: 0.8; }
@@ -103,3 +115,116 @@ thin {
   vertical-align: middle;
   width: 95%;
   margin: 1em; }
+
+.camera-dropdown {
+  width: 100%; }
+
+.range-slider {
+  margin: 0px 0 0 0%;
+  width: 100%;
+  margin-bottom: 15px; }
+
+.motor-control label {
+  display: inline-block;
+  width: 100%;
+  margin-left: 10px;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-weight: 2800;
+  letter-spacing: 1px;
+  color: #ed1b35;
+  opacity: 0.8; }
+
+.motor-control {
+  outline: 1px solid #ed1b35;
+  outline-offset: -10px;
+  padding: 10px; }
+
+.motor-control:hover {
+  outline-style: dotted; }
+
+.range-slider__range {
+  -webkit-appearance: none;
+  width: calc(100% - (83px));
+  height: 5px;
+  border-radius: 5px;
+  background: #ed1b35;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: -10px; }
+  .range-slider__range::-webkit-slider-thumb {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2c3e50;
+    cursor: pointer;
+    transition: background .15s ease-in-out; }
+    .range-slider__range::-webkit-slider-thumb:hover {
+      background: #1abc9c; }
+  .range-slider__range:active::-webkit-slider-thumb {
+    background: #1abc9c; }
+  .range-slider__range::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border: 0;
+    border-radius: 50%;
+    background: #2c3e50;
+    cursor: pointer;
+    transition: background .15s ease-in-out; }
+    .range-slider__range::-moz-range-thumb:hover {
+      background: #1abc9c; }
+  .range-slider__range:active::-moz-range-thumb {
+    background: #1abc9c; }
+
+.range-slider__value {
+  display: inline-block;
+  position: absolute;
+  width: 60px;
+  color: #28282c;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: #ed1b35;
+  padding: 5px 10px;
+  margin-left: 0px;
+  margin-top: -12px; }
+  .range-slider__value:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid #ed1b35;
+    border-bottom: 7px solid transparent;
+    content: ''; }
+
+::-moz-range-track {
+  background: #ed1b35;
+  border: 0; }
+
+input::-moz-focus-inner,
+input::-moz-focus-outer {
+  border: 0; }
+
+.styled-select {
+  background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;
+  height: 29px;
+  overflow: hidden;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  margin-top: 5px; }
+
+.styled-select select {
+  background: #28282c;
+  border: none;
+  font-size: 14px;
+  height: 29px;
+  padding: 5px;
+  /* If you add too much padding here, the options won't show in IE */
+  width: 268px;
+  color: #ed1b35;
+  font-weight: 700; }
