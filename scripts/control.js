@@ -1,34 +1,34 @@
- // var socket = io();
- //   socket.on('liveStream', function(url) {
- //     $('#stream').attr('src', url);
- //     $('.start').hide();
- //   });
+ var socket = io();
+   socket.on('liveStream', function(url) {
+     $('#stream').attr('src', url);
+     $('.start').hide();
+   });
  
- //   function startStream() {
- //     socket.emit('start-stream');
- //     $('.start').hide();
- //   }
+   function startStream() {
+     socket.emit('start-stream');
+     $('.start').hide();
+   }
   
 
- //   function upMove(){
- // 	  socket.emit('#move#dec#up');
- //   }
+   function upMove(){
+ 	  socket.emit('#move#dec#up');
+   }
   
- //   function downMove(){
- // 	  socket.emit('#move#dec#down');
- //   }
+   function downMove(){
+ 	  socket.emit('#move#dec#down');
+   }
   
- //   function leftMove(){
- // 	  socket.emit('#move#alt#left');
- //   }
+   function leftMove(){
+ 	  socket.emit('#move#alt#left');
+   }
   
- //   function rightMove(){
- // 	  socket.emit('#move#alt#right');
- //   }
+   function rightMove(){
+ 	  socket.emit('#move#alt#right');
+   }
   
- //   function capture(){
- // 	  socket.emit('#capture#image#1');
- //   }
+   function capture(){
+ 	  socket.emit('#capture#image#1');
+   }
 
 $(document).ready(function() {
 
@@ -81,12 +81,14 @@ var rangeSlider = function(){
     range.on('input', function(){
       $(this).next(value).html(this.value);
       console.log($(this).attr('id')+"#"+$(this).val());
+      socket.emit($(this).attr('id')+"#"+$(this).val())
     });
   });
 
   dropdown.each(function(){
     dropdown.on('input',function(){
       console.log($(this).attr('id')+"#"+$(this).val());
+       socket.emit($(this).attr('id')+"#"+$(this).val());
     })
   });
 };
