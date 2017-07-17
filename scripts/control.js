@@ -11,7 +11,8 @@
   
 
    function upMove(){
- 	  socket.emit('#move#dec#up');
+	   console.log("emit move up");
+ 	  socket.emit('command',{data:'#move#dec#up'});
    }
   
    function downMove(){

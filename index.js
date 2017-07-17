@@ -70,6 +70,11 @@ io.on('connection', function(socket) {
 	 step('capture'); 
   });
   
+  socket.on("command", function(data) {
+	console.log("[js] got message: " +data);
+    pShell.send(JSON.stringify(data));
+  });
+  
  
 });
 
