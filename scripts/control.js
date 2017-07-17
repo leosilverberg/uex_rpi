@@ -9,28 +9,25 @@
  //     $('.start').hide();
  //   }
   
- //   function testMove(){
- // 	socket.emit('test-move');
- //   }
-  
+
  //   function upMove(){
- // 	  socket.emit('up-move');
+ // 	  socket.emit('#move#dec#up');
  //   }
   
  //   function downMove(){
- // 	  socket.emit('down-move');
+ // 	  socket.emit('#move#dec#down');
  //   }
   
  //   function leftMove(){
- // 	  socket.emit('left-move');
+ // 	  socket.emit('#move#alt#left');
  //   }
   
  //   function rightMove(){
- // 	  socket.emit('right-move');
+ // 	  socket.emit('#move#alt#right');
  //   }
   
  //   function capture(){
- // 	  socket.emit('capture');
+ // 	  socket.emit('#capture#image#1');
  //   }
 
 $(document).ready(function() {
@@ -71,7 +68,8 @@ $(document).ready(function() {
 var rangeSlider = function(){
   var slider = $('.range-slider'),
       range = $('.range-slider__range'),
-      value = $('.range-slider__value');
+      value = $('.range-slider__value'),
+      dropdown = $('.settingdrop');
     
   slider.each(function(){
 
@@ -82,7 +80,14 @@ var rangeSlider = function(){
 
     range.on('input', function(){
       $(this).next(value).html(this.value);
+      console.log($(this).attr('id')+"#"+$(this).val());
     });
+  });
+
+  dropdown.each(function(){
+    dropdown.on('input',function(){
+      console.log($(this).attr('id')+"#"+$(this).val());
+    })
   });
 };
 

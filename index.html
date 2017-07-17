@@ -10,7 +10,7 @@
 	
 	  <!-- jQuery -->
   <script src="scripts/jquery-3.2.1.min.js"></script>
-  <!-- Bootstrap JavaScript -->
+
   <link rel="stylesheet" href="scripts/pure-min.css" />
   <link rel="stylesheet" href="scripts/rangeslider.css" />
   <link rel="stylesheet" href="scripts/style.css" />
@@ -95,17 +95,17 @@ motor CONTROL
       <div class="pure-u-1-1"><p>dec</p></div>
       <div class="pure-u-1-1 range-slider">
         <label>steps</label><br>
-       <input class="camera-slider range-slider__range" type="range" min="0" max="100"  step="1" value="50">
+       <input class="camera-slider range-slider__range" type="range" min="0" max="10"  step="1" value="1" id="motorsetting#dec-step">
        <span class="range-slider__value">0</span>
       </div>
       <label>step type</label>
       <div class="pure-u-1-2 styled-select">
 
-      <select name="select" class="camera-dropdown"> 
-            <option value="value1">microstep</option>
-            <option value="value1">singlestep</option> 
-            <option value="value1">doublestep</option> 
-            <option value="value1">interleave</option> 
+      <select name="select" class="settingdrop" id="motorsetting#dec-type"> 
+            <option value="micro">microstep</option>
+            <option value="single">singlestep</option> 
+            <option value="double">doublestep</option> 
+            <option value="inter">interleave</option> 
             
             
         </select>
@@ -117,17 +117,17 @@ motor CONTROL
       <div class="pure-u-1-1"><p>alt</p></div>
       <div class="pure-u-1-1 range-slider">
         <label>steps</label><br>
-       <input class="camera-slider range-slider__range" type="range" min="0" max="100"  step="1" value="50">
+       <input class="camera-slider range-slider__range" type="range" min="0" max="10"  step="1" value="1" id="motorsetting#alt-step">
        <span class="range-slider__value">0</span>
       </div>
       <label>step type</label>
       <div class="pure-u-1-2 styled-select">
 
-      <select name="select" class="camera-dropdown"> 
-            <option value="value1">microstep</option>
-            <option value="value1">singlestep</option> 
-            <option value="value1">doublestep</option> 
-            <option value="value1">interleave</option> 
+      <select name="select" class="settingdrop" id="motorsetting#dec-type"> 
+            <option value="micro">microstep</option>
+            <option value="single">singlestep</option> 
+            <option value="double">doublestep</option> 
+            <option value="inter">interleave</option> 
             
             
         </select>
@@ -139,17 +139,17 @@ motor CONTROL
       <div class="pure-u-1-1"><p>focus</p></div>
       <div class="pure-u-1-1 range-slider">
         <label>steps</label><br>
-       <input class="camera-slider range-slider__range" type="range" min="0" max="100"  step="1" value="50">
+       <input class="camera-slider range-slider__range" type="range" min="0" max="10"  step="1" value="1" id="motorsetting#focus-step">
        <span class="range-slider__value">0</span>
       </div>
       <label>step type</label>
       <div class="pure-u-1-2 styled-select">
 
-      <select name="select" class="camera-dropdown"> 
-            <option value="value1">microstep</option>
-            <option value="value1">singlestep</option> 
-            <option value="value1">doublestep</option> 
-            <option value="value1">interleave</option> 
+      <select name="select" class="settingdrop" id="motorsetting#dec-type"> 
+            <option value="micro">microstep</option>
+            <option value="single">singlestep</option> 
+            <option value="double">doublestep</option> 
+            <option value="inter">interleave</option> 
             
             
         </select>
@@ -195,7 +195,7 @@ CAMERA CONTROL
       <label>ISO</label>
         <div class="pure-u-1-2 styled-select">
 
-          <select name="select" class="camera-dropdown"> <!--Supplement an id here instead of using 'name'-->
+          <select name="select" class="camera-dropdown">
             <option value="value1">100</option>
             <option value="value1">200</option> 
             <option value="value1">320</option> 
@@ -208,7 +208,7 @@ CAMERA CONTROL
         </div>
         <label>white balance</label>
         <div class="pure-u-1-2 styled-select">
-          <select name="select" class="camera-dropdown"> <!--Supplement an id here instead of using 'name'-->
+          <select name="select" class="camera-dropdown">
             <option value="value1">off</option>
             <option value="value1">auto</option> 
             <option value="value1">sunlight</option> 
@@ -224,7 +224,7 @@ CAMERA CONTROL
       <div class="pure-u-1-1 range-slider">
       <label>exposure time (s)</label>
       <br>
-       <input class="camera-slider range-slider__range" type="range" min="0.1" max="5.5"  step="0.1" value="3.5">
+       <input class="camera-slider range-slider__range" type="range" min="0.1" max="5.5"  step="0.1" value="3.5" id="camerasetting#exposure">
        <span class="range-slider__value">0</span>
       </div>
      
