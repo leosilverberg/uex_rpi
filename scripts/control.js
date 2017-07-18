@@ -28,7 +28,7 @@
    }
   
    function capture(){
- 	  socket.emit('#capture#image#1');
+ 	  socket.emit('command',{'type':'capture'});
    }
 
 

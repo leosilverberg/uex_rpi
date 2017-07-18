@@ -176,7 +176,29 @@ class ControlThread(Thread):
 					ALT_STEP_TYPE = decoded["alt_step_type"]
 					FOCUS_STEP_TYPE = decoded["focus_step_type"]
 					print('{"msg":"###UEX SETTINGS####"}')
+					print('{"msg":"'+EXPOSURE_TIME+'"}')
 					   
+				elif decoded["type"] == "capture":
+					print('{"msg":"###CAPTURE###"}')
+					try:
+						camera.stop_recording()
+						print('{"msg":"stopped recording"}')
+						camera.resolution = (2592,1944)
+						print('{"msg":"set to high-res"}')
+						camera.framerate = (Fraction(1,6))
+						camera.shutter_speed = EXPOSURE_TIME*1000000
+						camera.iso = ISO
+						sleep(10)
+						camera.exposure_mode = 'off'
+						camera.capture('captured/test1_'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
+						print('{"msg":"picture taken"}')
+						camera.framerate = 24
+						camera.shutter_speed = 0
+						camera.iso = 100
+						camera.exposure_mode='auto'
+						sleep(20)
+						startBc()
+						print('{"msg":"started bc"}')
 
 				elif dataString == "capture\n" :
 					print("[py] capturing")
