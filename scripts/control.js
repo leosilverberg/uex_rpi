@@ -87,20 +87,53 @@ var rangeSlider = function(){
 
     range.on('input', function(){
       $(this).next(value).html(this.value);
-      scopeSettings[$(this).attr('id')] = $(this).val();
-      console.log(scopeSettings);
-      socket.emit('command',scopeSettings);
+     
+      
     
     });
   });
 
-  dropdown.each(function(){
-    dropdown.on('input',function(){
-      scopeSettings[$(this).attr('id')] = $(this).val();
-      console.log(scopeSettings);
-       
-    })
+  $('#exposure').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
   });
+
+  $('#ISO').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+  $('#focus_step_type').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+  $('#focus_num_steps').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+  $('#alt_step_type').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+  $('#alt_num_steps').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+  $('#dec_step_type').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+  $('#dec_num_steps').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
+
 };
 
 rangeSlider();
