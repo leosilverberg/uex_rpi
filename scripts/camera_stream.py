@@ -67,9 +67,9 @@ def startBc():
     
 	output = BroadcastOutput(camera)
 	broadcast_thread = BroadcastThread(output.converter, websocket_server)
-	print('Starting recording')
+	# print('Starting recording')
 	camera.start_recording(output, 'yuv', resize=(1024,768))
-	print('Starting bc|||||||||||||##########')
+	# print('Starting bc|||||||||||||##########')
 	broadcast_thread.start()
 
 class StreamingWebSocket(WebSocket):
@@ -78,7 +78,7 @@ class StreamingWebSocket(WebSocket):
 
 class BroadcastOutput(object):
     def __init__(self, camera):
-        print('Spawning background conversion process')
+        # print('Spawning background conversion process')
         self.converter = Popen([
             'avconv',
             '-f', 'rawvideo',
@@ -97,7 +97,7 @@ class BroadcastOutput(object):
         self.converter.stdin.write(b)
 
     def flush(self):
-        print('Waiting for background conversion process to exit')
+        # print('Waiting for background conversion process to exit')
         self.converter.stdin.close()
         self.converter.wait()
         
@@ -151,7 +151,7 @@ class ControlThread(Thread):
 				elif dataString == "kill\n" :
 					print("stop all processes")
 				elif data["type"] == "move":
-					print("[web->py] MOOVE")
+					print("{'msg:'[web->py] MOOVE'}")
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
@@ -210,7 +210,7 @@ def main():
     #camera.resolution = (WIDTH, HEIGHT)
     #camera.framerate = FRAMERATE
     sleep(1) # camera warm-up time
-    print('Initializing websockets server on port %d' % WS_PORT)
+    # print('Initializing websockets server on port %d' % WS_PORT)
     websocket_server = make_server(
 		'', WS_PORT,
 		server_class=WSGIServer,
@@ -218,33 +218,33 @@ def main():
 		app=WebSocketWSGIApplication(handler_cls=StreamingWebSocket))
     websocket_server.initialize_websockets_manager()
     websocket_thread = Thread(target=websocket_server.serve_forever)
-    print('Initializing broadcast thread')
+    # print('Initializing broadcast thread')
     output = BroadcastOutput(camera)
     broadcast_thread = BroadcastThread(output.converter, websocket_server)
-    print('Starting recording')
+    # print('Starting recording')
     camera.start_recording(output, 'yuv', resize=(1024,768))
-    print('Starting motor inits & init control thread')
+    # print('Starting motor inits & init control thread')
     atexit.register(turnOffMotors)
     control_thread = ControlThread()
     try:
-        print('Starting websockets thread')
+        # print('Starting websockets thread')
         websocket_thread.start()
-        print('Starting broadcast thread')
+        # print('Starting broadcast thread')
         broadcast_thread.start()
-        print('Starting control thread')
+        # print('Starting control thread')
         control_thread.start()
         while True:
             camera.wait_recording(1)
     except KeyboardInterrupt:
         pass
     finally:
-        print('Stopping recording')
+        # print('Stopping recording')
         camera.stop_recording()
-        print('Waiting for broadcast thread to finish')
+        # print('Waiting for broadcast thread to finish')
         broadcast_thread.join()
-        print('Shutting down websockets server')
+        # print('Shutting down websockets server')
         websocket_server.shutdown()
-        print('Waiting for websockets thread to finish')
+        # print('Waiting for websockets thread to finish')
         websocket_thread.join()
 
 
