@@ -11,6 +11,7 @@ from threading import Thread
 from time import sleep, time
 from wsgiref.simple_server import make_server
 from fractions import Fraction
+import json
 
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_StepperMotor
 
@@ -136,6 +137,7 @@ class ControlThread(Thread):
 			if data > "" :
 				dataString = "str(data)"
 				print('{"msg":"got a data thing"}')
+				decoded = json.loads(data)
 				# print(data)
 				if dataString == "up\n" :
 					print("[py] got up")
@@ -151,7 +153,7 @@ class ControlThread(Thread):
 					decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif dataString == "kill\n" :
 					print("stop all processes")
-				elif data["type"] == "move":
+				elif decoded["type"] == "move":
 					print('{"msg":"it lives"}')
 				elif dataString == "capture\n" :
 					print("[py] capturing")
