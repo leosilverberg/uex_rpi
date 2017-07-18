@@ -78,12 +78,12 @@ io.on('connection', function(socket) {
  
 });
 
-pShell.on('message', function (message){
-	if(message > ""){
-		console.log("[js] got message: " +message);
-	}
+// pShell.on('message', function (message){
+// 	if(message > ""){
+// 		console.log("[js] got message: " +message);
+// 	}
 	
-});
+// });
 
 function step(dir){
 	console.log("sending command");
