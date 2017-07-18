@@ -72,18 +72,18 @@ io.on('connection', function(socket) {
   
   socket.on("command", function(data) {
 	console.log("[js] got message: " +data);
-    // pShell.send(data);
+    pShell.send(data);
   });
   
  
 });
 
-// pShell.on('message', function (message){
-// 	if(message > ""){
-// 		console.log("[js] got message: " +message);
-// 	}
+pShell.on('message', function (message){
+	if(message > ""){
+		console.log("[js] got message: " +message);
+	}
 	
-// });
+});
 
 function step(dir){
 	console.log("sending command");
