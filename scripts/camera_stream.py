@@ -186,8 +186,11 @@ class ControlThread(Thread):
 						camera.resolution = (2592,1944)
 						print('{"msg":"set to high-res"}')
 						camera.framerate = (Fraction(1,6))
+						print('{"msg":"changed framerate"}')
 						camera.shutter_speed = EXPOSURE_TIME*1000000
+						print('{"msg":"changed exposure"}')
 						camera.iso = ISO
+						print('{"msg":"changed ISO"}')
 						sleep(10)
 						camera.exposure_mode = 'off'
 						camera.capture('captured/test1_'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
