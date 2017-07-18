@@ -135,7 +135,8 @@ class ControlThread(Thread):
 			data = sys.stdin.readline()
 			if data > "" :
 				dataString = "str(data)"
-				print(data["type"])
+				print('{"msg":"got a data thing"}')
+				print(data)
 				if dataString == "up\n" :
 					print("[py] got up")
 					raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
