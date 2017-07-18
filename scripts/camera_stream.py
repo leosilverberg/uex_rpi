@@ -136,7 +136,7 @@ class ControlThread(Thread):
 			if data > "" :
 				dataString = "str(data)"
 				print('{"msg":"got a data thing"}')
-				print(data)
+				# print(data)
 				if dataString == "up\n" :
 					print("[py] got up")
 					raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
@@ -152,7 +152,7 @@ class ControlThread(Thread):
 				elif dataString == "kill\n" :
 					print("stop all processes")
 				elif data["type"] == "move":
-					print('{"msg":"mooves"}')
+					print('{"msg":"it lives"}')
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
