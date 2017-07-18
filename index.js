@@ -80,7 +80,7 @@ io.on('connection', function(socket) {
 
 pShell.on('message', function (message){
 	if(message > ""){
-		console.log("[js] got message: " +message);
+		console.log("[js] got message: " +message.msg);
 	}
 	
 });
