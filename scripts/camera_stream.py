@@ -187,9 +187,9 @@ class ControlThread(Thread):
 						print('{"msg":"set to high-res"}')
 						camera.framerate = (Fraction(1,6))
 						print('{"msg":"changed framerate"}')
-						camera.shutter_speed = EXPOSURE_TIME*1000000
+						camera.shutter_speed = float(EXPOSURE_TIME)*1000000
 						print('{"msg":"changed exposure"}')
-						camera.iso = ISO
+						camera.iso = int(ISO)
 						print('{"msg":"changed ISO"}')
 						sleep(10)
 						camera.exposure_mode = 'off'
