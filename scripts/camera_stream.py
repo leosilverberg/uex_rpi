@@ -192,7 +192,8 @@ class ControlThread(Thread):
 						
 						# print('{"msg":"'+EXPOSURE_TIME+'"}')
 
-						camera.shutter_speed = EXPOSURE_TIME*1000000
+						camera.shutter_speed = 6000000
+						camera.exposure_mode = 'off'
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
 						print('{"msg":"changed ISO"}')
