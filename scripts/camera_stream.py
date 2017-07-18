@@ -151,7 +151,7 @@ class ControlThread(Thread):
 				elif dataString == "kill\n" :
 					print("stop all processes")
 				elif data["type"] == "move":
-					print("{'msg:'[web->py] MOOVE'}")
+					print('{"msg":"mooves"}')
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
