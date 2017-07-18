@@ -87,7 +87,7 @@ pShell.on('message', function (message){
 
 function step(dir){
 	console.log("sending command");
-	pShell.send(dir);
+	// pShell.send(dir);
 }
 
 ON_DEATH(function(signal,err){

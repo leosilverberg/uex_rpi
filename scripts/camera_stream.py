@@ -134,7 +134,7 @@ class ControlThread(Thread):
 		while True:
 			data = sys.stdin.readline()
 			if data > "" :
-				dataString = str(data)
+				dataString = "str(data)"
 				print("[web->py]"+data)
 				if dataString == "up\n" :
 					print("[py] got up")
