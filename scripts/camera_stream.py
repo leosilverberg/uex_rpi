@@ -222,8 +222,6 @@ class ControlThread(Thread):
 					#control_thread.start()
 					#	camera.capture('test.jpg')
 
-
-def echoSettings():
 	 
     		          
             
