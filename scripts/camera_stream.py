@@ -54,7 +54,7 @@ camera.annotate_text = str(camera.resolution)
 camera.vflip = True
 camera.shutter_speed = 0
 
-EXPOSURE_TIME = 0
+EXPOSURE_TIME = 1
 WHITE_BALANCE = "off"
 ISO = 100
 
@@ -190,7 +190,7 @@ class ControlThread(Thread):
 						print('{"msg":"changed framerate"}')
 						print('{"msg":"changing exposure"}')
 						
-						print('{"msg":"'+float(EXPOSURE_TIME)+'"}')
+						print('{"msg":"'+EXPOSURE_TIME+'"}')
 
 						camera.shutter_speed = float(EXPOSURE_TIME)*1000000
 						print('{"msg":"changed exposure"}')
