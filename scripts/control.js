@@ -12,19 +12,19 @@
 
    function upMove(){
 	   console.log("emit move up");
- 	  socket.emit('command',{'type':'move', 'var':'dec', 'val':'up'});
+ 	    socket.emit('command',{'type':'move', 'var':'dec', 'val':'up'});
    }
   
    function downMove(){
- 	  socket.emit('#move#dec#down');
+ 	  socket.emit('command',{'type':'move', 'var':'dec', 'val':'down'});
    }
   
    function leftMove(){
- 	  socket.emit('#move#alt#left');
+ 	  socket.emit('command',{'type':'move', 'var':'alt', 'val':'left'});
    }
   
    function rightMove(){
- 	  socket.emit('#move#alt#right');
+ 	  socket.emit('command',{'type':'move', 'var':'alt', 'val':'right'});
    }
   
    function capture(){

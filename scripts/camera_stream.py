@@ -139,22 +139,17 @@ class ControlThread(Thread):
 				print('{"msg":"got a data thing"}')
 				decoded = json.loads(data)
 				# print(data)
-				if dataString == "up\n" :
-					print("[py] got up")
-					raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
-				elif dataString == "down\n" :
-					print("[py] got down")
-					raStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
-				elif dataString == "left\n" :
-					print("[py] got left")
-					decStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
-				elif dataString == "right\n" :
-					print("[py] got right")
-					decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
-				elif dataString == "kill\n" :
-					print("stop all processes")
-				elif decoded["type"] == "move":
-					print('{"msg":"it lives"}')
+				if decoded["type"] == "move":
+					if decoded["var"] == "dec":
+						if decoded["val"] == "up":
+							raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+						elif decoded["val"] == "down":
+							raStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+					elif decoded["var"] == "alt":
+						if decoded["val"] == "left":
+							decStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+						elif decoded["val"] == "right":
+							decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
