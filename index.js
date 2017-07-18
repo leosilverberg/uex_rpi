@@ -72,7 +72,7 @@ io.on('connection', function(socket) {
   
   socket.on("command", function(data) {
 	console.log("[js] got message: " +data);
-    pShell.send(data);
+    // pShell.send(data);
   });
   
  
