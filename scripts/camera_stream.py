@@ -150,7 +150,7 @@ class ControlThread(Thread):
 					decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif dataString == "kill\n" :
 					print("stop all processes")
-				elif data["type"] == "move":
+				elif data["command"]["type"] == "move":
 					print('{"msg":"mooves"}')
 				elif dataString == "capture\n" :
 					print("[py] capturing")
