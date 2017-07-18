@@ -153,6 +153,7 @@ class ControlThread(Thread):
 				decoded = json.loads(data)
 				# print(data)
 				if decoded["type"] == "move":
+					print('{"msg":"###move###"}')
 					if decoded["var"] == "dec":
 						if decoded["val"] == "up":
 							raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
