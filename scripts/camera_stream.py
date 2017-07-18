@@ -190,9 +190,9 @@ class ControlThread(Thread):
 						print('{"msg":"changed framerate"}')
 						print('{"msg":"changing exposure"}')
 						
-						print('{"msg":"'+EXPOSURE_TIME+'"}')
+						# print('{"msg":"'+EXPOSURE_TIME+'"}')
 
-						camera.shutter_speed = float(EXPOSURE_TIME)*1000000
+						camera.shutter_speed = EXPOSURE_TIME*1000000
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
 						print('{"msg":"changed ISO"}')
