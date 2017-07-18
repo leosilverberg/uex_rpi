@@ -32,7 +32,7 @@
    }
 
 
-var scopeSettings = {'exposure':'0', 'wb':'off', 'ISO':'100', 'dec_num_steps':'1', 'alt_num_steps':'1', 'focus_num_steps':'1', 'dec_step_type':'micro', 'alt_step_type':'micro', 'focus_step_type':'micro' }
+var scopeSettings = {'type':'settings','exposure':'0', 'wb':'off', 'ISO':'100', 'dec_num_steps':'1', 'alt_num_steps':'1', 'focus_num_steps':'1', 'dec_step_type':'micro', 'alt_step_type':'micro', 'focus_step_type':'micro' }
 
 $(document).ready(function() {
 
@@ -89,6 +89,7 @@ var rangeSlider = function(){
       $(this).next(value).html(this.value);
       scopeSettings[$(this).attr('id')] = $(this).val();
       console.log(scopeSettings);
+      socket.emit('command',scopeSettings);
     
     });
   });
