@@ -175,7 +175,8 @@ class ControlThread(Thread):
 					DEC_STEP_TYPE = decoded["dec_step_type"]
 					ALT_STEP_TYPE = decoded["alt_step_type"]
 					FOCUS_STEP_TYPE = decoded["focus_step_type"]
-					echoSettings()
+					print('{"msg":"###UEX SETTINGS####"}')
+					   
 
 				elif dataString == "capture\n" :
 					print("[py] capturing")
@@ -223,8 +224,7 @@ class ControlThread(Thread):
 
 
 def echoSettings():
-	print('{"msg":"###UEX SETTINGS####"}')
-	print('{"msg":"EXPOSURE TIME: '+EXPOSURE_TIME+'"}')    
+	 
     		          
             
 def main():
