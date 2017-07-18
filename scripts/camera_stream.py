@@ -201,7 +201,7 @@ class ControlThread(Thread):
     		          
             
 def main():
-    print({"msg":["data":"Initializing camera"]})
+    print({"msg":["Initializing camera"]})
     global websocket_server
     global output
     global camera
