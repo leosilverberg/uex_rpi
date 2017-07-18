@@ -199,41 +199,6 @@ class ControlThread(Thread):
 						sleep(20)
 						startBc()
 						print('{"msg":"started bc"}')
-
-				elif dataString == "capture\n" :
-					print("[py] capturing")
-					try:
-					
-						print("[py] taking picture")
-						
-						camera.annotate_text = str(camera.resolution)
-						print("[py] annotated")
-						camera.stop_recording()
-						print("[py] stopped rec")
-						
-						camera.resolution = (2592,1944)
-						print("[py] changed to hi-res")
-						camera.capture('captured/'+str(datetime.now())+'_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
-						print("[py]defualt picture taken")
-						camera.framerate = (Fraction(1,6))
-						camera.shutter_speed = 5000000
-						camera.iso = 800
-						sleep(10)
-						camera.exposure_mode = 'off'
-						print(camera.shutter_speed)
-						
-						camera.capture('captured/'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
-						
-						print("[py]long exp picture taken")
-						
-						camera.framerate = 24
-						camera.shutter_speed = 0
-						camera.iso = 100
-						camera.exposure_mode='auto'
-						sleep(20)
-						
-						startBc()
-						print("[py] started broadcast again")
 						
 					except:
 						pass
