@@ -71,7 +71,7 @@ io.on('connection', function(socket) {
   });
   
   socket.on("command", function(data) {
-	console.log("[js] got message: " +data);
+	console.log("[js] got command message: " +JSON.stringify(data));
     pShell.send(data);
   });
   
@@ -80,7 +80,7 @@ io.on('connection', function(socket) {
 
 pShell.on('message', function (message){
 	if(message > ""){
-		console.log("[js] got message: " +message.msg);
+		console.log("[js] got message: " +JSON.stringify(msg));
 	}
 	
 });
