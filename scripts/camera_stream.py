@@ -53,6 +53,19 @@ camera.framerate = FRAMERATE
 camera.annotate_text = str(camera.resolution)
 camera.vflip = True
 camera.shutter_speed = 0
+
+EXPOSURE_TIME = 0
+WHITE_BALANCE = "off"
+ISO = 100
+
+DEC_NUM_STEPS = 1
+ALT_NUM_STEPS = 1
+FOCUS_NUM_STEPS = 1
+
+DEC_STEP_TYPE = "micro"
+ALT_STEP_TYPE = "micro"
+FOCUS_STEP_TYPE = "micro" 
+
 ###########################################
 def turnOffMotors():
     mh.getMotor(1).run(Adafruit_MotorHAT.RELEASE)
@@ -150,6 +163,20 @@ class ControlThread(Thread):
 							decStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
 						elif decoded["val"] == "right":
 							decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+				elif decoded["type"] == "settings":
+					EXPOSURE_TIME = decoded["exposure"]
+					WHITE_BALANCE = decoded["wb"]
+					ISO = decoded["ISO"]
+
+					DEC_NUM_STEPS = decoded["dec_num_steps"]
+					ALT_NUM_STEPS = decoded["alt_num_steps"]
+					FOCUS_NUM_STEPS = decoded["focus_num_steps"]
+
+					DEC_STEP_TYPE = decoded["dec_step_type"]
+					ALT_STEP_TYPE = decoded["alt_step_type"]
+					FOCUS_STEP_TYPE = decoded["focus_step_type"]
+					echoSettings()
+
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
@@ -195,7 +222,9 @@ class ControlThread(Thread):
 					#	camera.capture('test.jpg')
 
 
-    
+def echoSettings():
+	print('{"msg":"###UEX SETTINGS####"}')
+	print('{"msg":"EXPOSURE TIME: '+EXPOSURE_TIME+'"}')    
     		          
             
 def main():

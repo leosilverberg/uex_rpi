@@ -31,6 +31,9 @@
  	  socket.emit('#capture#image#1');
    }
 
+
+var scopeSettings = {'exposure':'0', 'wb':'off', 'ISO':'100', 'dec_num_steps':'1', 'alt_num_steps':'1', 'focus_num_steps':'1', 'dec_step_type':'micro', 'alt_step_type':'micro', 'focus_step_type':'micro' }
+
 $(document).ready(function() {
 
   
@@ -71,6 +74,9 @@ var rangeSlider = function(){
       range = $('.range-slider__range'),
       value = $('.range-slider__value'),
       dropdown = $('.settingdrop');
+      setting = $('.setting');
+
+ 
     
   slider.each(function(){
 
@@ -81,15 +87,17 @@ var rangeSlider = function(){
 
     range.on('input', function(){
       $(this).next(value).html(this.value);
-      console.log($(this).attr('id')+"#"+$(this).val());
-      socket.emit($(this).attr('id')+"#"+$(this).val())
+      scopeSettings[$(this).attr('id')] = $(this).val();
+      console.log(scopeSettings);
+    
     });
   });
 
   dropdown.each(function(){
     dropdown.on('input',function(){
-      console.log($(this).attr('id')+"#"+$(this).val());
-       socket.emit($(this).attr('id')+"#"+$(this).val());
+      scopeSettings[$(this).attr('id')] = $(this).val();
+      console.log(scopeSettings);
+       
     })
   });
 };
