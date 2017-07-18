@@ -15,7 +15,7 @@ var sockets = {};
 var ON_DEATH = require('death');
 
 var PythonShell = require('python-shell');
-var pShell = new PythonShell('camera_stream.py', {mode:'text',scriptPath:"/home/pi/uex_rpi/scripts/", pythonOptions: ['-u'], pythonPath:"python3"});
+var pShell = new PythonShell('camera_stream.py', {mode:'json',scriptPath:"/home/pi/uex_rpi/scripts/", pythonOptions: ['-u'], pythonPath:"python3"});
 console.log("Started camera_stream.py");
 
 app.use('/', express.static(path.join(__dirname, 'stream')));
@@ -72,7 +72,7 @@ io.on('connection', function(socket) {
   
   socket.on("command", function(data) {
 	console.log("[js] got message: " +data);
-    pShell.send(JSON.stringify(data));
+    pShell.send(data);
   });
   
  

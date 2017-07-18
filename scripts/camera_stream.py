@@ -135,7 +135,7 @@ class ControlThread(Thread):
 			data = sys.stdin.readline()
 			if data > "" :
 				dataString = str(data)
-				print("[web->py]"+dataString)
+				print("[web->py]"+data)
 				if dataString == "up\n" :
 					print("[py] got up")
 					raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
@@ -150,6 +150,8 @@ class ControlThread(Thread):
 					decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif dataString == "kill\n" :
 					print("stop all processes")
+				elif data["type"] == "move":
+					print("[web->py] MOOVE")
 				elif dataString == "capture\n" :
 					print("[py] capturing")
 					try:
