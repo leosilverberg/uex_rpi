@@ -214,7 +214,7 @@ class ControlThread(Thread):
 							print('{"msg":"some error occured ========================"}')
 
 						try:
-							camera.shutter_speed = EXPOSURE_TIME
+							camera.shutter_speed = int(EXPOSURE_TIME)
 						except ValueError:
 							print('{"msg":"value error"}')
 						except TypeError:
