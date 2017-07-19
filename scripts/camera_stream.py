@@ -177,10 +177,9 @@ class ControlThread(Thread):
 						elif decoded["val"] == "right":
 							decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif decoded["type"] == "settings":
-					try:
-						EXPOSURE_TIME = float(decoded["exposure"])
-					except ValueError:
-						print('{"msg":"'+ValueError+'"}')
+					
+					EXPOSURE_TIME = decoded["exposure"]
+					
 
 					WHITE_BALANCE = decoded["wb"]
 					ISO = decoded["ISO"]
@@ -205,8 +204,14 @@ class ControlThread(Thread):
 						camera.framerate = (Fraction(1,6))
 						print('{"msg":"changed framerate"}')
 						print('{"msg":"changing exposure"}')
-						
-						print('{"msg":"'+float(EXPOSURE_TIME)*1000000+'"}')
+
+						try:
+							print('{"msg":"'+float(EXPOSURE_TIME)+'"}')
+						except ValueError:
+							print('{"msg":"'+ValueError+'"}')
+						except:
+							print('{"msg":"come error occured ========================"}')
+
 
 						camera.shutter_speed = float(EXPOSURE_TIME)*1000000
 						camera.exposure_mode = 'off'
