@@ -240,13 +240,15 @@ class ControlThread(Thread):
 						sleep(5)
 						camera.exposure_mode = 'off'
 						print('{"msg":"taking photo"}')
+						start_time = time.time()
 						camera.capture('captured/test1_'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
-						print('{"msg":"picture taken"}')
+						elapsed_time = time.time() - start_time
+						print('{"msg":"picture taken: '+str(elapsed_time)+' seconds"}')
 						camera.framerate = 24
 						camera.shutter_speed = 0
 						camera.iso = 100
 						camera.exposure_mode='auto'
-						sleep(20)
+						sleep(5)
 						startBc()
 						print('{"msg":"started bc"}')
 						
