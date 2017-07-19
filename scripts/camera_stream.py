@@ -193,6 +193,7 @@ class ControlThread(Thread):
 					DEC_STEP_TYPE = decoded["dec_step_type"]
 					ALT_STEP_TYPE = decoded["alt_step_type"]
 					FOCUS_STEP_TYPE = decoded["focus_step_type"]
+					camera.awb_mod = str(WHITE_BALANCE)
 					print('{"msg":"###UEX SETTINGS####"}')
 					print('{"msg":"'+EXPOSURE_TIME+'"}')
 					   
