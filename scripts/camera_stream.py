@@ -217,9 +217,11 @@ class ControlThread(Thread):
 							camera.shutter_speed = EXPOSURE_TIME*1000000
 						except ValueError:
 							print('{"msg":"value error"}')
+						except TypeError:
+							print('{"msg":"type error"}')
 						except:
 							print('{"msg":"some error occured ========================"}')
-							
+
 						camera.exposure_mode = 'off'
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
