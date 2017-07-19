@@ -179,9 +179,9 @@ class ControlThread(Thread):
 				elif decoded["type"] == "settings":
 					try:
 						EXPOSURE_TIME = float(decoded["exposure"])
-					except: ValueError:
+					except ValueError:
 						print('{"msg":"'+ValueError+'"}')
-						
+
 					WHITE_BALANCE = decoded["wb"]
 					ISO = decoded["ISO"]
 
