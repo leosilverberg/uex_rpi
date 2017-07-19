@@ -207,13 +207,19 @@ class ControlThread(Thread):
 
 						try:
 							EXPOSURE_TIME = float(EXPOSURE_TIME)
+							print('{"msg":"floated exposure"}')
 						except ValueError:
 							print('{"msg":"value error"}')
 						except:
 							print('{"msg":"some error occured ========================"}')
 
-
-						camera.shutter_speed = float(EXPOSURE_TIME)*1000000
+						try:
+							camera.shutter_speed = EXPOSURE_TIME*1000000
+						except ValueError:
+							print('{"msg":"value error"}')
+						except:
+							print('{"msg":"some error occured ========================"}')
+							
 						camera.exposure_mode = 'off'
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
