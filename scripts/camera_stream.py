@@ -177,7 +177,7 @@ class ControlThread(Thread):
 						elif decoded["val"] == "right":
 							decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif decoded["type"] == "settings":
-					EXPOSURE_TIME = decoded["exposure"]
+					EXPOSURE_TIME = float(decoded["exposure"])
 					WHITE_BALANCE = decoded["wb"]
 					ISO = decoded["ISO"]
 
