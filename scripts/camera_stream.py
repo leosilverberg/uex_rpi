@@ -194,6 +194,9 @@ class ControlThread(Thread):
 					ALT_STEP_TYPE = decoded["alt_step_type"]
 					FOCUS_STEP_TYPE = decoded["focus_step_type"]
 					camera.awb_mode = str(WHITE_BALANCE)
+					if WHITE_BALANCE == "off" :
+						camera.awb_gains = float(decoded["wb_gains"])
+					
 					print('{"msg":"###UEX SETTINGS####"}')
 					print('{"msg":"'+EXPOSURE_TIME+'"}')
 					   
