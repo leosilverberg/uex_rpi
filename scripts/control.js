@@ -108,6 +108,15 @@ var rangeSlider = function(){
     socket.emit('command',scopeSettings);
   });
 
+  $('#wb_slider').on('input', function(){
+    if(scopeSettings['wb'] == 'off'){
+      scopeSettings['wb'] = $(this).val();
+      socket.emit('command',scopeSettings);
+    }
+    
+    
+  });
+
   $('#focus_step_type').on('input', function(){
     scopeSettings[$(this).attr('id')] = $(this).val();
     socket.emit('command',scopeSettings);
