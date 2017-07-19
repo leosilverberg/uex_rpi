@@ -52,7 +52,7 @@ body {
 
 .header {
   text-align: center;
-  padding-bottom: 50px; }
+  padding-bottom: 2px; }
 
 #videoCanvas {
   border-radius: 5px;
