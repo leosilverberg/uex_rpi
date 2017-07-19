@@ -215,7 +215,7 @@ class ControlThread(Thread):
 							print('{"msg":"some error occured in floating ========================"}')
 
 						try:
-							print('{"msg":"'+EXPOSURE_TIME+'"}')
+							print('{"msg":"'+str(EXPOSURE_TIME)+'"}')
 						except ValueError:
 							print('{"msg":"value error in printing"}')
 						except:
