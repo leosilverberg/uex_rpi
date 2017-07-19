@@ -230,7 +230,7 @@ class ControlThread(Thread):
 						except:
 							print('{"msg":"some error occured in setting the shutterspeed========================"}')
 
-						print('{"msg":"exposure speed:'+camera.exposure_speed+'"}')
+						print('{"msg":"exposure speed:'+str(camera.exposure_speed)+'"}')
 						camera.exposure_mode = 'off'
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
