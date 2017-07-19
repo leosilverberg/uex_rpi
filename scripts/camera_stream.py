@@ -145,6 +145,18 @@ class ControlThread(Thread):
 		global output
 		global camera
 		global broadcast_thread
+		global EXPOSURE_TIME
+		global WHITE_BALANCE
+		global ISO
+
+		global DEC_NUM_STEPS
+		global ALT_NUM_STEPS
+		global FOCUS_NUM_STEPS
+
+		global DEC_STEP_TYPE
+		global ALT_STEP_TYPE
+		global FOCUS_STEP_TYPE
+
 		while True:
 			data = sys.stdin.readline()
 			if data > "" :
