@@ -208,6 +208,7 @@ class ControlThread(Thread):
 						try:
 							EXPOSURE_TIME = float(EXPOSURE_TIME)
 							print('{"msg":"floated exposure"}')
+							print('{"msg":"'+EXPOSURE_TIME+'"}')
 						except ValueError:
 							print('{"msg":"value error"}')
 						except:
