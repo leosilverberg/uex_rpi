@@ -203,7 +203,7 @@ class ControlThread(Thread):
 						print('{"msg":"stopped recording"}')
 						camera.resolution = (2592,1944)
 						print('{"msg":"set to high-res"}')
-						camera.framerate = (Fraction(1,6))
+						camera.framerate = 1/float(EXPOSURE_TIME)
 						print('{"msg":"changed framerate"}')
 						print('{"msg":"changing exposure"}')
 
@@ -234,6 +234,7 @@ class ControlThread(Thread):
 							print('{"msg":"some error occured in setting the shutterspeed========================"}')
 
 						print('{"msg":"exposure speed:'+str(timedelta(microseconds=camera.shutter_speed))+'"}')
+
 						camera.exposure_mode = 'off'
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
