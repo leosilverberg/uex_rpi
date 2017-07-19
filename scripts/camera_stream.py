@@ -214,7 +214,7 @@ class ControlThread(Thread):
 							print('{"msg":"some error occured ========================"}')
 
 						try:
-							camera.shutter_speed = int(EXPOSURE_TIME)
+							camera.shutter_speed = int(EXPOSURE_TIME*1000000)
 						except ValueError:
 							print('{"msg":"value error"}')
 						except TypeError:
@@ -228,6 +228,7 @@ class ControlThread(Thread):
 						print('{"msg":"changed ISO"}')
 						sleep(10)
 						camera.exposure_mode = 'off'
+						print('{"msg":"taking photo"}')
 						camera.capture('captured/test1_'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
 						print('{"msg":"picture taken"}')
 						camera.framerate = 24
