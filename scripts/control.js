@@ -103,6 +103,11 @@ var rangeSlider = function(){
     socket.emit('command',scopeSettings);
   });
 
+  $('#wb').on('input', function(){
+    scopeSettings[$(this).attr('id')] = $(this).val();
+    socket.emit('command',scopeSettings);
+  });
+
   $('#focus_step_type').on('input', function(){
     scopeSettings[$(this).attr('id')] = $(this).val();
     socket.emit('command',scopeSettings);
