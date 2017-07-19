@@ -203,8 +203,8 @@ class ControlThread(Thread):
 						print('{"msg":"stopped recording"}')
 						camera.resolution = (2592,1944)
 						print('{"msg":"set to high-res"}')
-						
-						# camera.framerate = 1/float(EXPOSURE_TIME)
+
+						camera.framerate = 1
 						print('{"msg":"changed framerate"}')
 						print('{"msg":"changing exposure"}')
 
