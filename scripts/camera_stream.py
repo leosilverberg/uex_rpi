@@ -16,7 +16,7 @@ import json
 from Adafruit_MotorHAT import Adafruit_MotorHAT, Adafruit_DCMotor, Adafruit_StepperMotor
 
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 import atexit
 import curses
 
@@ -24,6 +24,8 @@ import picamera
 from ws4py.websocket import WebSocket
 from ws4py.server.wsgirefserver import WSGIServer, WebSocketWSGIRequestHandler
 from ws4py.server.wsgiutils import WebSocketWSGIApplication
+
+
 
 ###########################################
 # CONFIG
@@ -230,12 +232,12 @@ class ControlThread(Thread):
 						except:
 							print('{"msg":"some error occured in setting the shutterspeed========================"}')
 
-						print('{"msg":"exposure speed:'+str(camera.shutter_speed)+'"}')
+						print('{"msg":"exposure speed:'+str(timedelta(microseconds=camera.shutter_speed))+'"}')
 						camera.exposure_mode = 'off'
 						print('{"msg":"changed exposure"}')
 						camera.iso = int(ISO)
 						print('{"msg":"changed ISO"}')
-						sleep(10)
+						sleep(5)
 						camera.exposure_mode = 'off'
 						print('{"msg":"taking photo"}')
 						camera.capture('captured/test1_'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
