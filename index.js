@@ -76,7 +76,7 @@ io.on('connection', function(socket) {
   });
   
  
-});
+
 
 pShell.on('message', function (message){
 	if(message > ""){
@@ -90,6 +90,7 @@ pShell.on('message', function (message){
 
   }
 	
+});
 });
 
 function step(dir){
