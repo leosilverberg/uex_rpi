@@ -292,9 +292,9 @@ class ControlThread(Thread):
 							im=Image.open(latest_image)
 							im.thumbnail(200,200, Image.ANTIALIAS)
 							im.save('thumbnail_'+latest_image)
+							print('{"msg":"made thumbnail"}')
 						except IOError:
 							print('{"msg":"couldnt make thumbnail"}')
-						Image.open(latest_image).thumbnail(200,200).save('thumbnail_'+latest_image)
 						elapsed_time = time.time() - start_time
 						print('{"msg":"picture taken: '+str(elapsed_time)+' seconds"}')
 						camera.framerate = 24
