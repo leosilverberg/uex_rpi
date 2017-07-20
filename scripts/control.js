@@ -3,6 +3,10 @@
      $('#stream').attr('src', url);
      $('.start').hide();
    });
+
+   socket.on('img',function(msg){
+    $('#latest-thumb').attr("src", "captured/thumb_"+JSON.stringify(msg.src)+".jpg");
+  });
  
    function startStream() {
      socket.emit('start-stream');

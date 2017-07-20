@@ -84,7 +84,9 @@ pShell.on('message', function (message){
 	}
   if(message.hasOwnProperty('img')){
     console.log("[js] got an img")
-    $('#latest-thumb').attr("src", "captured/thumb_"+JSON.stringify(message.img)+".jpg");
+    socket.emit('img',{'src':message.img});
+  
+    
 
   }
 	
