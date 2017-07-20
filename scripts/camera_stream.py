@@ -170,14 +170,14 @@ class ControlThread(Thread):
 					print('{"msg":"###move###"}')
 					if decoded["var"] == "dec":
 						if decoded["val"] == "up":
-							raStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+							raStepper.step(DEC_NUM_STEPS,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
 						elif decoded["val"] == "down":
-							raStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+							raStepper.step(DEC_NUM_STEPS,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 					elif decoded["var"] == "alt":
 						if decoded["val"] == "left":
-							decStepper.step(1,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+							decStepper.step(ALT_NUM_STEPS,Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
 						elif decoded["val"] == "right":
-							decStepper.step(1,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+							decStepper.step(ALT_NUM_STEPS,Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 				elif decoded["type"] == "settings":
 					
 					EXPOSURE_TIME = decoded["exposure"]
