@@ -287,6 +287,13 @@ class ControlThread(Thread):
 						start_time = time.time()
 						latest_image = 'captured/full_'+str(datetime.now())+'.jpg'
 						camera.capture(latest_image,format='jpeg', use_video_port=False, quality=100, bayer=True)
+						print('{"msg":"making thumbnail"}')
+						try:
+							im=Image.open(latest_image)
+							im.thumbnail(200,200, Image.ANTIALIAS)
+							im.save('thumbnail_'+latest_image)
+						except IOError:
+							print('{"msg":"couldnt make thumbnail"}')
 						Image.open(latest_image).thumbnail(200,200).save('thumbnail_'+latest_image)
 						elapsed_time = time.time() - start_time
 						print('{"msg":"picture taken: '+str(elapsed_time)+' seconds"}')
