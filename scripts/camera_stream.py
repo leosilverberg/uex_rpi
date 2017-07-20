@@ -285,7 +285,7 @@ class ControlThread(Thread):
 						camera.exposure_mode = 'off'
 						print('{"msg":"taking photo"}')
 						start_time = time.time()
-						datestamp =str(datetime.now())
+						datestamp =str(datetime.date.strftime())
 						latest_image = 'captured/full_'+datestamp+'.jpg'
 						camera.capture(latest_image,format='jpeg', use_video_port=False, quality=100, bayer=True)
 						print('{"msg":"making thumbnail"}')
