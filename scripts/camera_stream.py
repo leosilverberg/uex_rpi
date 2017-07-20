@@ -291,7 +291,7 @@ class ControlThread(Thread):
 						try:
 							im = Image.open(latest_image)
 							im.thumbnail((200,200), Image.ANTIALIAS)
-							im.save('thumbnail_'+latest_image, 'JPEG')
+							im.save('thumbnail.jpg', 'JPEG')
 							print('{"msg":"made thumbnail"}')
 						except IOError:
 							print('{"msg":"couldnt make thumbnail"}')
