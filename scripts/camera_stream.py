@@ -25,6 +25,8 @@ from ws4py.websocket import WebSocket
 from ws4py.server.wsgirefserver import WSGIServer, WebSocketWSGIRequestHandler
 from ws4py.server.wsgiutils import WebSocketWSGIApplication
 
+from PIL import Image
+
 
 
 ###########################################
@@ -66,7 +68,9 @@ FOCUS_NUM_STEPS = 1
 
 DEC_STEP_TYPE = "micro"
 ALT_STEP_TYPE = "micro"
-FOCUS_STEP_TYPE = "micro" 
+FOCUS_STEP_TYPE = "micro"
+thumbnail_size = (200,200)
+latest_image =""
 
 ###########################################
 def turnOffMotors():
@@ -158,6 +162,7 @@ class ControlThread(Thread):
 		global DEC_STEP_TYPE
 		global ALT_STEP_TYPE
 		global FOCUS_STEP_TYPE
+		global latest_image
 
 		while True:
 			data = sys.stdin.readline()
@@ -280,7 +285,9 @@ class ControlThread(Thread):
 						camera.exposure_mode = 'off'
 						print('{"msg":"taking photo"}')
 						start_time = time.time()
-						camera.capture('captured/test1_'+str(datetime.now())+'_long_exp_uex1.jpg',format='jpeg', use_video_port=False, quality=100, bayer=True)
+						latest_image = 'captured/full_'+str(datetime.now())+'.jpg'
+						camera.capture(latest_image,format='jpeg', use_video_port=False, quality=100, bayer=True)
+						Image.open(latest_image).thumbnail(200,200).save('thumbnail_'+latest_image)
 						elapsed_time = time.time() - start_time
 						print('{"msg":"picture taken: '+str(elapsed_time)+' seconds"}')
 						camera.framerate = 24
