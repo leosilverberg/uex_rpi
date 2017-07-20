@@ -170,14 +170,42 @@ class ControlThread(Thread):
 					print('{"msg":"###move###"}')
 					if decoded["var"] == "dec":
 						if decoded["val"] == "up":
-							raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+							if DEC_STEP_TYPE == "micro":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+							elif DEC_STEP_TYPE == "single":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+							elif DEC_STEP_TYPE == "double":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
+							elif DEC_STEP_TYPE == "inter":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
 						elif decoded["val"] == "down":
-							raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+							if DEC_STEP_TYPE == "micro":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+							elif DEC_STEP_TYPE == "single":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
+							elif DEC_STEP_TYPE == "double":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.DOUBLE)
+							elif DEC_STEP_TYPE == "inter":
+								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.INTERLEAVE)
 					elif decoded["var"] == "alt":
 						if decoded["val"] == "left":
-							decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+							if ALT_STEP_TYPE == "micro":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+							elif ALT_STEP_TYPE == "single":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+							elif ALT_STEP_TYPE == "double":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
+							elif ALT_STEP_TYPE == "inter":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
 						elif decoded["val"] == "right":
-							decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+							if ALT_STEP_TYPE == "micro":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+							elif ALT_STEP_TYPE == "single":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
+							elif ALT_STEP_TYPE == "double":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.DOUBLE)
+							elif ALT_STEP_TYPE == "inter":
+								decStepper.step(int(ALT_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.INTERLEAVE)
 				elif decoded["type"] == "settings":
 					
 					EXPOSURE_TIME = decoded["exposure"]
