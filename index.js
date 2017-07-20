@@ -82,6 +82,10 @@ pShell.on('message', function (message){
 	if(message > ""){
 		console.log("[js] got message: " +JSON.stringify(message));
 	}
+  if(message.hasOwnProperty('img')){
+    console.log("[js] got an img")
+    
+  }
 	
 });
 

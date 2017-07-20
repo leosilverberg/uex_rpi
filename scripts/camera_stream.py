@@ -295,6 +295,7 @@ class ControlThread(Thread):
 							im.thumbnail((200,200), Image.ANTIALIAS)
 							im.save(tbn, 'JPEG')
 							print('{"msg":"made thumbnail"}')
+							print('{"thumb":"'+datestamp+'"}')
 						except IOError:
 							print('{"msg":"couldnt make thumbnail"}')
 						elapsed_time = time.time() - start_time
