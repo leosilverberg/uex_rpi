@@ -20,6 +20,7 @@ console.log("Started camera_stream.py");
 
 app.use('/', express.static(path.join(__dirname, 'stream')));
 app.use('/scripts', express.static(path.join(__dirname, 'scripts')));
+app.use('/captured', express.static(path.join(__dirname, 'captured')));
 
 
 
