@@ -289,9 +289,10 @@ class ControlThread(Thread):
 						camera.capture(latest_image,format='jpeg', use_video_port=False, quality=100, bayer=True)
 						print('{"msg":"making thumbnail"}')
 						try:
+							tbn = 'thumb_'+latest_image
 							im = Image.open(latest_image)
 							im.thumbnail((200,200), Image.ANTIALIAS)
-							im.save('thumbnail.jpg', 'JPEG')
+							im.save(tbn, 'JPEG')
 							print('{"msg":"made thumbnail"}')
 						except IOError:
 							print('{"msg":"couldnt make thumbnail"}')
