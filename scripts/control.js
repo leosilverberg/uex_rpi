@@ -6,8 +6,8 @@
 
    socket.on('img',function(msg){
     str = JSON.stringify(msg.src);
-    str = str.replace(/"/g,"");
-    $('#latest-thumb').attr("src", "captured/thumb_"+JSON.stringify(msg.src)+".jpg");
+
+    $('#latest-thumb').attr("src", "captured/thumb_"+str+".jpg");
   });
  
    function startStream() {
