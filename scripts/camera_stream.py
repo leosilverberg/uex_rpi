@@ -171,12 +171,16 @@ class ControlThread(Thread):
 					if decoded["var"] == "dec":
 						if decoded["val"] == "up":
 							if DEC_STEP_TYPE == "micro":
+								print('{"msg":"microstep"}')
 								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
 							elif DEC_STEP_TYPE == "single":
+								print('{"msg":"singlestep"}')
 								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
 							elif DEC_STEP_TYPE == "double":
+								print('{"msg":"doublestep"}')
 								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
 							elif DEC_STEP_TYPE == "inter":
+								print('{"msg":"interleaved step"}')
 								raStepper.step(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
 						elif decoded["val"] == "down":
 							if DEC_STEP_TYPE == "micro":
