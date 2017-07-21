@@ -76,6 +76,16 @@ io.on('connection', function(socket) {
 	console.log("[js] got command message: " +JSON.stringify(data));
     pShell.send(data);
   });
+
+  glob("captured/*.jpg",{}, function(er, files){
+  
+  for(var i = 0; i < files.length; i++){
+    var spl = files[i].split("_");
+    files[i] = spl[1];
+  }
+  console.log("[js] got message:"+ files);
+  socket.emit('imginit',{'src':files});
+} )
   
  
 
@@ -97,15 +107,7 @@ pShell.on('message', function (message){
   
 });
 
-glob("captured/*.jpg",{}, function(er, files){
-  
-  for(var i = 0; i < files.length; i++){
-    var spl = files[i].split("_");
-    files[i] = spl[1];
-  }
-  console.log("[js] got message:"+ files);
-  io.sockets.emit('imginit',{'src':files});
-} )
+
 
 function step(dir){
 	console.log("sending command");
