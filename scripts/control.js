@@ -12,7 +12,7 @@
     str = JSON.stringify(msg.src);
 
     $('#latest-thumb').attr("src", "captured/thumb_"+str+".jpg");
-    $('#selected-image').attr("src", "caputred/full_"+str+".jpg");
+    $('#selected-image').attr("src", "captured/full_"+str+".jpg");
   });
  
    function startStream() {
