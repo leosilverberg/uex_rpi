@@ -100,7 +100,7 @@ pShell.on('message', function (message){
 glob("captured/*.jpg",{}, function(er, files){
   
   for(var i = 0; i < files.length; i++){
-    spl = files[i].split("_");
+    var spl = files[i].split("_");
     files[i] = spl[1];
   }
   console.log("[js] got message: " +files);
