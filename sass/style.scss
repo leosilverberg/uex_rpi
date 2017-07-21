@@ -158,7 +158,7 @@ thin{
 
 .footerContainer{
 	
-	position:fixed;
+	position:absolute;
 	bottom:0px;
 	width:100%;
 }
@@ -355,3 +355,38 @@ input::-moz-focus-outer {
    // -moz-border-radius: 20px;
    // border-radius: 20px;
 }
+
+.top-container{
+  height:100vh;
+}
+
+.bottom-container{
+  height:100vh;
+  position:absolute;
+  top:0;
+   
+   width:100%;
+   display:none;
+
+
+}
+
+.gallery-container{
+  margin:40px;
+  
+  border:solid 1px $base-red;
+  background-color:$light-grey;
+  @include box_shadow(4);
+ 
+}
+
+.gallery-container h1{
+  color:$base-red;
+  padding:10px;
+  font-size:0.9em;
+  margin:0;
+}
+.gallery{
+  margin:20px;
+}
+

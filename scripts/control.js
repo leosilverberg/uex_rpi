@@ -1,3 +1,7 @@
+ function showGallery(){
+  $(".bottom-container").show();
+};
+
  var socket = io();
    socket.on('liveStream', function(url) {
      $('#stream').attr('src', url);
@@ -8,6 +12,7 @@
     str = JSON.stringify(msg.src);
 
     $('#latest-thumb').attr("src", "captured/thumb_"+str+".jpg");
+    $('#selected-image').attr("src", "caputred/full_"+str+".jpg");
   });
  
    function startStream() {
@@ -154,9 +159,13 @@ var rangeSlider = function(){
   });
 
 
+
+
 };
 
 rangeSlider();
+
+
 
 
 

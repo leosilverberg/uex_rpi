@@ -78,7 +78,7 @@ thin {
   opacity: 1; }
 
 .footerContainer {
-  position: fixed;
+  position: absolute;
   bottom: 0px;
   width: 100%; }
 
@@ -228,3 +228,28 @@ input::-moz-focus-outer {
   width: 268px;
   color: #ed1b35;
   font-weight: 700; }
+
+.top-container {
+  height: 100vh; }
+
+.bottom-container {
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: none; }
+
+.gallery-container {
+  margin: 40px;
+  border: solid 1px #ed1b35;
+  background-color: #343439;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
+
+.gallery-container h1 {
+  color: #ed1b35;
+  padding: 10px;
+  font-size: 0.9em;
+  margin: 0; }
+
+.gallery {
+  margin: 20px; }
