@@ -253,7 +253,14 @@ input::-moz-focus-outer {
   margin: 0; }
 
 .gallery {
-  margin: 20px; }
+  margin: 20px;
+  height: 100%; }
+
+.selected-container {
+  height: 80%; }
 
 .selected-container img {
-  width: 100%; }
+  height: 100%; }
+
+.test {
+  height: 70%; }
