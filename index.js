@@ -104,7 +104,7 @@ glob("captured/*.jpg",{}, function(er, files){
     files[i] = spl[1];
   }
   console.log("[js] got message:"+ files);
-  io.sockets.emit('imginit',{'src':files});
+  io.sockets.emit('imginit',{'src':'whatever'});
 } )
 
 function step(dir){
