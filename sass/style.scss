@@ -373,7 +373,7 @@ input::-moz-focus-outer {
 
 .gallery-container{
   margin:40px;
-  
+  height:90vh;
   border:solid 1px $base-red;
   background-color:$light-grey;
   @include box_shadow(4);
@@ -390,3 +390,9 @@ input::-moz-focus-outer {
   margin:20px;
 }
 
+.selected-container img{
+  width:100%;
+}
+.selected-image{
+
+}
