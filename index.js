@@ -103,6 +103,7 @@ glob("captured/*.jpg",{}, function(er, files){
     var spl = files[i].split("_");
     files[i] = spl[1];
   }
+  console.log("[js] got message: sending imginit");
   io.sockets.emit('imginit',{'src':files});
 } )
 
