@@ -6,6 +6,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var fs = require('fs');
 var path = require('path');
+var glob = require("glob");
 
 var spawn = require('child_process').spawn;
 var proc;
@@ -95,6 +96,10 @@ pShell.on('message', function (message){
   }
   
 });
+
+glob("captured/*.jpg",{}, function(er, files){
+  console.log("[js] got message: " +files);
+} )
 
 function step(dir){
 	console.log("sending command");
