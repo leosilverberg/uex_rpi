@@ -257,10 +257,15 @@ input::-moz-focus-outer {
   height: 100%; }
 
 .selected-container {
+  text-align: center;
   height: 80%; }
 
 .selected-container img {
   height: 100%; }
 
 .test {
-  height: 70%; }
+  height: 90%; }
+
+#all-images {
+  max-width: 100%;
+  height: 20%; }
