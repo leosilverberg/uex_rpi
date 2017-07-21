@@ -79,19 +79,21 @@ io.on('connection', function(socket) {
  
 
 
+
+});
+
 pShell.on('message', function (message){
-	if(message > ""){
-		console.log("[js] got message: " +JSON.stringify(message));
-	}
+  if(message > ""){
+    console.log("[js] got message: " +JSON.stringify(message));
+  }
   if(message.hasOwnProperty('img')){
     console.log("[js] got an img")
-    socket.emit('img',{'src':message.img});
+    io.sockets.emit('img',{'src':message.img});
   
     
 
   }
-	
-});
+  
 });
 
 function step(dir){
