@@ -16,7 +16,7 @@
   });
 
    socket.on('imginit',function(msg){
-    array = msg.src;
+    var array = msg.src;
     for(var i = 0; i < array.length; i++){
        $("#all-images").append("<div class='pure-u-1-8'> <img src='"+"captured/thumb_"+JSON.stringify(array[i])+"'/></div>");
     }
