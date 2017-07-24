@@ -19,7 +19,10 @@
     console.log("got imginit");
     var array = msg.src;
     for(var i = 0; i < array.length; i++){
-       $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+unescape(JSON.stringify(array[i]))+"'/></div>");
+      array[i] = JSON.stringify(array[i]);
+      array[i] = array[i].slice(0, -1);
+      array[i] = array[i].substring(2);
+       $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+array[i]+"'/></div>");
     }
    
 
