@@ -22,10 +22,10 @@
       array[i] = JSON.stringify(array[i]);
       array[i] = array[i].slice(0, -1);
       array[i] = array[i].substring(1);
-       $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+array[i]+"'/></div>");
+       $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+array[i]+"' id='"+array[i]+"'/></div>");
        if(i == (array.length-1)){
-        $('#latest-thumb').attr("src", "captured/thumb_"+array[i]+".jpg");
-        $('#selected-image').attr("src", "captured/full_"+array[i]+".jpg");
+        $('#latest-thumb').attr("src", "captured/thumb_"+array[i]);
+        $('#selected-image').attr("src", "captured/full_"+array[i]);
         
        }
     }
