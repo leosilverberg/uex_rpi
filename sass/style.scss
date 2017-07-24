@@ -363,17 +363,17 @@ input::-moz-focus-outer {
 .bottom-container{
   height:100vh;
   position:absolute;
-  top:0;
+  top:100vh;
    
    width:100%;
-   display:none;
+   // display:none;
 
 
 }
 
 .gallery-container{
   margin:40px;
-  height:90vh;
+   min-height:90vh;
   border:solid 1px $base-red;
   background-color:$light-grey;
   @include box_shadow(4);
@@ -395,7 +395,7 @@ input::-moz-focus-outer {
   height:80%;
 }
 .selected-container img{
-  height:100%;
+  min-width:100%;
 
 }
 .selected-image{

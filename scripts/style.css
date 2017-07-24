@@ -235,13 +235,12 @@ input::-moz-focus-outer {
 .bottom-container {
   height: 100vh;
   position: absolute;
-  top: 0;
-  width: 100%;
-  display: none; }
+  top: 100vh;
+  width: 100%; }
 
 .gallery-container {
   margin: 40px;
-  height: 90vh;
+  min-height: 90vh;
   border: solid 1px #ed1b35;
   background-color: #343439;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22); }
@@ -261,7 +260,7 @@ input::-moz-focus-outer {
   height: 80%; }
 
 .selected-container img {
-  height: 100%; }
+  min-width: 100%; }
 
 .test {
   height: 90%; }
