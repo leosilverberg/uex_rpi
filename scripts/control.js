@@ -18,17 +18,21 @@
    socket.on('imginit',function(msg){
     console.log("got imginit");
     var array = msg.src;
+    $("#all-images").empty();
     for(var i = 0; i < array.length; i++){
       array[i] = JSON.stringify(array[i]);
       array[i] = array[i].slice(0, -1);
       array[i] = array[i].substring(1);
-       $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+array[i]+"' id='"+array[i]+"'/></div>");
+       $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+array[i]+"' id='"+array[i]+"' class='thumbling'/></div>");
        if(i == (array.length-1)){
         $('#latest-thumb').attr("src", "captured/thumb_"+array[i]);
         $('#selected-image').attr("src", "captured/full_"+array[i]);
         
        }
     }
+     $('.thumbling').on('click', function(){
+      $('#selected-image').attr("src", "captured/full_"+this.id);
+   });
    
 
   });
@@ -59,6 +63,8 @@
    function capture(){
  	  socket.emit('command',{'type':'capture'});
    }
+
+
 
 
 var scopeSettings = {'type':'settings','exposure':'1', 'wb':'off', 'ISO':'100', 'dec_num_steps':'1', 'alt_num_steps':'1', 'focus_num_steps':'1', 'dec_step_type':'micro', 'alt_step_type':'micro', 'focus_step_type':'micro', 'wb_gains':'1' }
