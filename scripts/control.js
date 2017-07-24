@@ -21,7 +21,7 @@
     for(var i = 0; i < array.length; i++){
       array[i] = JSON.stringify(array[i]);
       array[i] = array[i].slice(0, -1);
-      array[i] = array[i].substring(2);
+      array[i] = array[i].substring(1);
        $("#all-images").append("<div class='pure-u-1-8'> <img src='captured/thumb_"+array[i]+"'/></div>");
     }
    
