@@ -42,10 +42,10 @@ JSMPEG_MAGIC = b'jsmp'
 JSMPEG_HEADER = Struct('>4sHH')
 mh = Adafruit_MotorHAT()
 #setting up stepper1 200 steps/rev
-decStepper = mh.getStepper(400,1)
-raStepper = mh.getStepper(400,2)
-decStepper.setSpeed(30)
-raStepper.setSpeed(30)
+decStepper = mh.getStepper(200,1)
+raStepper = mh.getStepper(200,2)
+decStepper.setSpeed(40)
+raStepper.setSpeed(40)
 
 broadcast_thread = None
 websocket_server = None
