@@ -185,8 +185,10 @@ class ControlThread(Thread):
 								print('{"msg":"doublestep"}')
 								raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
 							elif DEC_STEP_TYPE == "inter":
-								print('{"msg":"interleaved step"}')
-								raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
+								count = 0
+								while count < int(DEC_NUM_STEPS):
+									raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
+									count += 1
 						elif decoded["val"] == "down":
 							if DEC_STEP_TYPE == "micro":
 								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
@@ -195,7 +197,10 @@ class ControlThread(Thread):
 							elif DEC_STEP_TYPE == "double":
 								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.DOUBLE)
 							elif DEC_STEP_TYPE == "inter":
-								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.INTERLEAVE)
+								count = 0
+								while count < int(DEC_NUM_STEPS):
+									raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.INTERLEAVE)
+									count += 1
 					elif decoded["var"] == "alt":
 						if decoded["val"] == "left":
 							if ALT_STEP_TYPE == "micro":
