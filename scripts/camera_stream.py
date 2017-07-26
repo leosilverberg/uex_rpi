@@ -177,25 +177,25 @@ class ControlThread(Thread):
 						if decoded["val"] == "up":
 							if DEC_STEP_TYPE == "micro":
 								print('{"msg":"microstep"}')
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
+								raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.MICROSTEP)
 							elif DEC_STEP_TYPE == "single":
 								print('{"msg":"singlestep"}')
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
+								raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.SINGLE)
 							elif DEC_STEP_TYPE == "double":
 								print('{"msg":"doublestep"}')
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
+								raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.DOUBLE)
 							elif DEC_STEP_TYPE == "inter":
 								print('{"msg":"interleaved step"}')
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
+								raStepper.oneStep(Adafruit_MotorHAT.BACKWARD, Adafruit_MotorHAT.INTERLEAVE)
 						elif decoded["val"] == "down":
 							if DEC_STEP_TYPE == "micro":
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
+								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.MICROSTEP)
 							elif DEC_STEP_TYPE == "single":
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
+								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.SINGLE)
 							elif DEC_STEP_TYPE == "double":
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.DOUBLE)
+								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.DOUBLE)
 							elif DEC_STEP_TYPE == "inter":
-								raStepper.oneStep(int(DEC_NUM_STEPS),Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.INTERLEAVE)
+								raStepper.oneStep(Adafruit_MotorHAT.FORWARD, Adafruit_MotorHAT.INTERLEAVE)
 					elif decoded["var"] == "alt":
 						if decoded["val"] == "left":
 							if ALT_STEP_TYPE == "micro":
