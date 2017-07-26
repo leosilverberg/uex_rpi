@@ -44,8 +44,8 @@ mh = Adafruit_MotorHAT()
 #setting up stepper1 200 steps/rev
 decStepper = mh.getStepper(200,1)
 raStepper = mh.getStepper(200,2)
-decStepper.setSpeed(40)
-raStepper.setSpeed(40)
+decStepper.setSpeed(10)
+raStepper.setSpeed(10)
 
 broadcast_thread = None
 websocket_server = None
